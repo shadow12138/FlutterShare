@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myapp/utils/const.dart';
 import 'package:myapp/utils/utils.dart';
 
 class RankWidget extends StatelessWidget {
@@ -9,7 +10,7 @@ class RankWidget extends StatelessWidget {
   RankWidget(this.subject);
 
   Widget _getItem(Map<String, dynamic> item, bool isFirst, bool isLast) {
-    double width = ScreenUtil.screenWidth / 3 * 2;
+    double width = Const.screenWidth / 3 * 2;
     double height = width * 0.4;
 
     Widget _image = Container(
@@ -123,9 +124,12 @@ class RankWidget extends StatelessWidget {
             ),
           ),
           Text('全部${subject['total']}'),
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 30.w,
+          Container(
+            margin: EdgeInsets.only(top: 4.h, left: 8.w),
+            child: Icon(
+              Icons.arrow_forward_ios,
+              size: 30.w,
+            ),
           )
         ],
       ),

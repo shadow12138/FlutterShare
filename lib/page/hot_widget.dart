@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myapp/utils/const.dart';
 import 'package:myapp/utils/utils.dart';
 
 class HotWidget extends StatelessWidget {
@@ -14,9 +15,9 @@ class HotWidget extends StatelessWidget {
   }
 
   Widget _getItem(Map<String, dynamic> item) {
-    double width = (ScreenUtil.screenWidth -
-            horizontalMargin * 2 -
-            (columns - 1) * itemPadding) /
+    double width = (Const.screenWidth -
+        horizontalMargin * 2 -
+        (columns - 1) * itemPadding) /
         columns;
     double height = width * 1.2;
     Widget _image = Container(
@@ -33,6 +34,8 @@ class HotWidget extends StatelessWidget {
       child: Text(
         item['title'],
         style: TextStyle(fontWeight: FontWeight.bold),
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
       ),
     );
 
@@ -49,11 +52,12 @@ class HotWidget extends StatelessWidget {
       margin: EdgeInsets.only(left: 6.w),
       child: Text(
         value.toString(),
-        style: TextStyle(color: Colors.black38, fontSize: 12),
+        style: TextStyle(color: Colors.black38, fontSize: 10),
       ),
     ));
 
     Widget _rating = Container(
+      margin: EdgeInsets.only(top: 6.w),
       child: Row(
         children: stars,
       ),
@@ -61,7 +65,6 @@ class HotWidget extends StatelessWidget {
 
     return Container(
       width: width.w,
-      margin: EdgeInsets.only(top: 6.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[_image, _title, _rating],
@@ -72,7 +75,7 @@ class HotWidget extends StatelessWidget {
   Widget _getList() {
     List<dynamic> items = subject['items'];
     return Container(
-      margin: EdgeInsets.only(top: 20.w),
+      margin: EdgeInsets.only(top: 30.h),
       child: Wrap(
         runSpacing: itemPadding.w,
         spacing: itemPadding.w,
@@ -96,11 +99,13 @@ class HotWidget extends StatelessWidget {
           ),
           Text(
             '全部${titleSubject['subject_count']}',
-            style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 30.w,
+          Container(
+            margin: EdgeInsets.only(top: 4.h, left: 8.w),
+            child: Icon(
+              Icons.arrow_forward_ios,
+              size: 30.w,
+            ),
           )
         ],
       ),

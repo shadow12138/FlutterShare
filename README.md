@@ -16,6 +16,6 @@
 - Row 水平线性布局
 - Column 垂直线性布局
 - Expanded 尽量多地占据容器剩余空间
-- Stack 内部空间堆叠摆放
+- Stack 内部控件堆叠摆放
 
 

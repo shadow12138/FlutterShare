@@ -1,22 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myapp/utils/const.dart';
 
 class EntranceWidget extends StatelessWidget {
   Map<String, dynamic> subject;
 
   EntranceWidget(this.subject);
 
+  int columns = 4;
+
   Widget _getItem(Map<String, dynamic> item) {
-    double iconSize = 140.w;
+    double iconSize = Const.screenWidth / (4 * 2);
     Widget _image = Image.network(
       item['icon'],
-      width: iconSize,
-      height: iconSize,
+      width: iconSize.w,
+      height: iconSize.w,
     );
     Widget _title = Container(
       margin: EdgeInsets.only(top: 20.w),
-      child: Text(item['title'], style: TextStyle(color: Colors.black54),),
+      child: Text(item['title'], style: TextStyle(color: Colors.black54, fontSize: 12),),
     );
 
     return Container(
@@ -29,7 +32,7 @@ class EntranceWidget extends StatelessWidget {
   Widget _getList() {
     List<dynamic> items = subject['subject_entraces'];
     return GridView.count(
-      crossAxisCount: 4,
+      crossAxisCount: columns,
       shrinkWrap: true,
       children: items.map((item) {
         return _getItem(item);
